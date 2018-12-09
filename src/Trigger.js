@@ -33,11 +33,11 @@ const actionsCss = (sheets, el, action) => {
   return actionStyles;
 };
 
-export class Pseudoclass extends React.Component {
+export class Trigger extends React.Component {
   componentDidMount() {
     const { channel } = this.props;
 
-    channel.on('sradevski/emit/trigger', this.handlePseudoclass);
+    channel.on('sradevski/trigger/emit', this.handleTrigger);
 
     this.iframe = document.getElementById(storybookIframe);
     if (!this.iframe) {
@@ -52,7 +52,7 @@ export class Pseudoclass extends React.Component {
 
     this.unmounted = true;
     const { channel } = this.props;
-    channel.removeListener('with/pseudoclass', this.handlePseudoclass);
+    channel.removeListener('sradevski/trigger/emit', this.handleTrigger);
   }
 
   getSelector = params => {
@@ -88,7 +88,7 @@ export class Pseudoclass extends React.Component {
     }
   };
 
-  handlePseudoclass = params => {
+  handleTrigger = params => {
     const selector = this.getSelector(params);
     this.applyActionStyle(selector, params.action, this.iframe);
   };

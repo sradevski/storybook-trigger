@@ -1,14 +1,14 @@
 import React from 'react';
 import addons from '@storybook/addons';
-import { Pseudoclass } from './Pseudoclass';
+import { Trigger } from './Trigger';
 
-addons.register('with/pseudoclass', api => {
+addons.register('sradevski/trigger', api => {
   const channel = addons.getChannel();
-  addons.addPanel('sradevski/emit/panel', {
-    title: 'Pseudoclass',
+  addons.addPanel('sradevski/trigger/panel', {
+    title: 'Trigger',
     // eslint-disable-next-line
     render: ({ active }) => (
-      <Pseudoclass channel={channel} api={api} active={active} />
+      <Trigger channel={channel} api={api} active={active} />
     ),
   });
 });

@@ -1,8 +1,8 @@
 import addons, { makeDecorator } from '@storybook/addons';
 
-export const withPseudoclass = makeDecorator({
-  name: 'withPseudoclass',
-  parameterName: 'pseudoclass',
+export const withTrigger = makeDecorator({
+  name: 'withTrigger',
+  parameterName: 'trigger',
   skipIfNoParametersOrOptions: true,
   allowDeprecatedUsage: true,
   wrapper: (getStory, context, { parameters }) => {
@@ -17,7 +17,7 @@ export const withPseudoclass = makeDecorator({
       class: story.props.className || story.props.class,
     };
 
-    channel.emit('sradevski/emit/trigger', allParameters);
+    channel.emit('sradevski/trigger/emit', allParameters);
 
     return story;
   },
